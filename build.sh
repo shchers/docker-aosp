@@ -23,6 +23,8 @@ if [ "$1" = "docker" ]; then
     export USE_CCACHE=true
     prebuilts/misc/linux-x86/ccache/ccache -M 50G
 
+    # Remove output folder
+    rm -rf rockdev
 
     # Trics for Android build system
     export ANDROID_JACK_VM_ARGS="-Xmx6g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"

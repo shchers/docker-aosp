@@ -46,6 +46,9 @@ else
     #export AOSP_IMAGE="kylemanna/aosp:7.0-nougat"
     export AOSP_IMAGE="shchers/docker-aosp:rock64-nougat-7.1"
 
+    # Fetch latest image
+    docker pull $AOSP_IMAGE
+
     #
     # Try to invoke the aosp wrapper with the following priority:
     #

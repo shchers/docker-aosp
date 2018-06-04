@@ -13,8 +13,8 @@ if [ "$1" = "docker" ]; then
     TEST_URL=${TEST_URL:-https://android.googlesource.com/platform/manifest}
 
     repo init --depth 1 -u "$TEST_URL" -b "$TEST_BRANCH"
-    rm -rf .repo/local_manifests
-    git clone https://github.com/ayufan-rock64/android-manifests -b nougat-7.1 .repo/local_manifests
+    #rm -rf .repo/local_manifests
+    #git clone https://github.com/ayufan-rock64/android-manifests -b nougat-7.1 .repo/local_manifests
 
     # Use default sync '-j' value embedded in manifest file to be polite
     repo sync -j $(($(nproc)*2)) -c --force-sync
@@ -30,16 +30,9 @@ if [ "$1" = "docker" ]; then
     export ANDROID_JACK_VM_ARGS="-Xmx6g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
     export ANDROID_NO_TEST_CHECK="true"
 
-    #source build/envsetup.sh
-    #lunch aosp_arm-eng
-    #make -j $(nproc)
-    device/rockchip/common/build_base.sh \
-                -a arm64 \
-                -l rock64_regular-eng \
-                -u rk3328_box_defconfig \
-                -k rockchip_smp_nougat_defconfig \
-                -d rk3328-rock64 \
-                -j $(($(nproc)+1))
+    source build/envsetup.sh
+    lunch ${VARIANT:-nanopi_k2-userdebug}
+    make -j $(nproc)
 
 else
     aosp_url="https://raw.githubusercontent.com/kylemanna/docker-aosp/master/utils/aosp"

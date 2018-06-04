@@ -9,8 +9,8 @@
 set -ex
 
 if [ "$1" = "docker" ]; then
-    TEST_BRANCH=${TEST_BRANCH:-android-7.1.2_r6}
-    TEST_URL=${TEST_URL:-https://android.googlesource.com/platform/manifest}
+    TEST_BRANCH=${TEST_BRANCH:-nanopi-k2-lollipop}
+    TEST_URL=${TEST_URL:-https://github.com/friendlyarm/android_manifest}
 
     repo init --depth 1 -u "$TEST_URL" -b "$TEST_BRANCH"
     #rm -rf .repo/local_manifests

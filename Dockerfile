@@ -50,4 +50,6 @@ ENV CCACHE_DIR /tmp/ccache
 WORKDIR /aosp
 
 RUN wget https://raw.githubusercontent.com/kylemanna/docker-aosp/7.0-nougat/utils/docker_entrypoint.sh -O /root/docker_entrypoint.sh
+RUN chmod a+x /root/docker_entrypoint.sh
+
 ENTRYPOINT ["/root/docker_entrypoint.sh"]

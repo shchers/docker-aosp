@@ -33,8 +33,8 @@ RUN chmod 755 /usr/local/bin/*
 WORKDIR /tmp
 
 # All builds will be done by user aosp
-COPY gitconfig /root/.gitconfig
-COPY ssh_config /root/.ssh/config
+RUN wget https://raw.githubusercontent.com/kylemanna/docker-aosp/7.0-nougat/gitconfig -O /root/.gitconfig
+RUN wget https://raw.githubusercontent.com/kylemanna/docker-aosp/7.0-nougat/ssh_config -O /root/.ssh/config
 
 # The persistent data will be in these two directories, everything else is
 # considered to be ephemeral
